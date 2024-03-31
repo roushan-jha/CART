@@ -1,6 +1,8 @@
 import React from 'react'
 import mac from "../assets/mac.jpeg"
 import shoes from "../assets/shoes.jpeg"
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 
 
 const Home = () => {
@@ -9,36 +11,30 @@ const Home = () => {
             name: 'Mac Book',
             price: 120000,
             imgSrc: mac,
-            id: "sfg",
+            id: "rcb",
         },
         {
             name: 'Black Shoes',
             price: 490,
             imgSrc: shoes,
-            id: "sfg",
+            id: "csk",
         },
-        {
-            name: 'Mac Book',
-            price: 120000,
-            imgSrc: mac,
-            id: "sfg",
-        },
-        {
-            name: 'Black Shoes',
-            price: 490,
-            imgSrc: shoes,
-            id: "sfg",
-        },
-        {
-            name: 'Mac Book',
-            price: 120000,
-            imgSrc: mac,
-            id: "sfg",
-        }
+        // {
+        //     name: 'Mac Book',
+        //     price: 120000,
+        //     imgSrc: mac,
+        //     id: "sfg",
+        // },
+        
     ];
+
+    const dispatch = useDispatch();
 
     const addToCartHandler = (options) => {
         console.log(options);
+        dispatch({type: "addToCart", payload: options});
+        dispatch({ type: "calculatePrice" });
+        toast.success("Added To Cart");
     }
 
   return (
